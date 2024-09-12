@@ -3,3 +3,5 @@
 client: Login.jsx, 
 
 sever: AuthController.js, AuthRoutes.js, ApiRoutes.js, index.js và PrismaClient.js
+
+Miêu tả: Hiện tại vẫn chưa đăng nhập được hết nó đang bị " User not found. "
