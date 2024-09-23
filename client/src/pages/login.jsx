@@ -1,12 +1,11 @@
-import { reducerCases } from "@/context/constants";
+import { reducerCases } from "@/context/constants"; 
 import { CHECK_USER_ENDPOINT } from "@/utils/ApiRoutes";
 import { firebaseAuth } from "@/utils/FirebaseConfig";
 import axios from "axios";
 import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import Image from "next/image";
 import { useRouter } from "next/router";
-import { userInfo } from "os";
-import React, { useEffect } from "react";
+import React, { useEffect } from "react"; 
 import { FcGoogle } from "react-icons/fc";
 
 function Login() {
@@ -24,14 +23,13 @@ function Login() {
     const {
       user: { displayName: name, email, photoUrl: profileImage },
     } = await signInWithPopup(firebaseAuth, provider);
-    // console.log({ user });
+
     try {
       if (email) {
         const { data } = await axios.post(CHECK_USER_ENDPOINT, { email });
         console.log({ data });
         if (!data.status) {
           dispatch({ type: reducerCases.SET_NEW_USER, newUser: true });
-
           dispatch({
             type: reducerCases.SET_USER_INFO,
             userInfo: {

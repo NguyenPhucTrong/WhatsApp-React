@@ -1,5 +1,6 @@
 import getPrismaInstance from "../utils/PrismaClient.js";
 
+
 export const checkUser = async (req, res, next) => {
   try {
     const { email } = req.body;
