@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import Image from "next/images";
+import Image from "next/image";
 import { FaCamera } from "react-icons/fa";
 import PhotoPicker from "./PhotoPicker";
 import ContextMenu from "./ContextMenu";
@@ -19,7 +19,7 @@ function Avatar({ type, image, setImage }) {
   const [showPhotoLibrary, setShowPhotoLibrary] = useState(false);
   const [shoCapturePhoto, setShowCapturePhoto] = useState(false);
   const showContextMenu = (e) => {
-    e.preventDefault();
+    e.preventDefault(); 
     setContextMenuCordinates({ x: e.pageX, y: e.pageY });
     setIsContextMenuVisible(true);
   };
@@ -63,6 +63,7 @@ function Avatar({ type, image, setImage }) {
   ];
 
   const photoPickerChange = async (e) => {
+    console.log(e);
     const file = e.target.files[0];
     const reader = new FileReader();
     const data = document.createElement("img");
@@ -114,9 +115,15 @@ function Avatar({ type, image, setImage }) {
                 <br /> Photo
               </span>
             </div>
-            <div className="flex items-center justify-center h-60 w-60 ">
-              <Image src={image} alt="avatar" className="rounded-full" fill />
+            <div className="flex items-center justify-center h-60 w-60 relative">
+              <Image 
+                src={image || "Test"}  // Đảm bảo rằng image có giá trị hợp lệ hoặc cung cấp một ảnh mặc định
+                alt="avatar" 
+                className="rounded-full object-cover" 
+                fill 
+              />
             </div>
+
           </div>
         )}
       </div>

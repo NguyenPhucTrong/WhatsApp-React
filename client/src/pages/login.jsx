@@ -1,4 +1,5 @@
 import { reducerCases } from "@/context/constants"; 
+import { useStateProvider } from "@/context/StateContext";
 import { CHECK_USER_ENDPOINT } from "@/utils/ApiRoutes";
 import { firebaseAuth } from "@/utils/FirebaseConfig";
 import axios from "axios";
@@ -11,7 +12,11 @@ import { FcGoogle } from "react-icons/fc";
 function Login() {
   const router = useRouter();
 
-  const [{ userInfo, newUser }, dispatch] = userStateProvider();
+  const [{ userInfo, newUser }, dispatch] = useStateProvider();
+
+  console.log('====================================');
+  console.log({userInfo, newUser});
+  console.log('====================================');
 
   useEffect(() => {
     console.log({ userInfo });

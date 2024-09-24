@@ -1,12 +1,15 @@
 import Avatar from "@/components/common/Avatar";
+import Input from "@/components/common/Input";
+import { useStateProvider } from "@/context/StateContext";
 import { ONBOARD_USER_ROUTE } from "@/utils/ApiRoutes";
 import axios from "axios";
+import Image from "next/image";
 import { useRouter } from "next/router";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 
 function onboarding() {
   const router = useRouter();
-  const [{ userInfo, newUser }, dispatch] = userStateProvider();
+  const [{ userInfo, newUser }, dispatch] = useStateProvider();
   const [name, setName] = useState(userInfo?.name || "");
   const [about, setAbout] = useState("");
   const [image, setImage] = useState("/default_avatar.png");
@@ -54,13 +57,14 @@ function onboarding() {
   };
 
   return (
-    <div className="bg-panel-header-background h-screen w-screen text-white flex fle-column items-center justify-center ">
+    <div className="bg-panel-header-background h-screen w-screen text-white flex flex-col items-center justify-center ">
       <div className="flex items-center justify-center gap-2 ">
         <Image
           src="/whatsapp.gif"
           alt="whatsapp"
           height={300}
           width={300}
+          // className="object-cover rounded-full"
         ></Image>
         <span className="text-7xl">Whatsapp</span>
       </div>

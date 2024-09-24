@@ -1,5 +1,6 @@
 import React, { useEffect, useId, useRef } from "react";
-import { IoClose } from "react-icon/io5";
+import {IoClose} from "react-icons/io5"
+
 
 function CapturePhoto({ hide, setImage }) {
   const videoRef = useRef(null);

@@ -1,6 +1,6 @@
 import index from "@/pages";
 import React from "react";
-import { IoClose } from "react-icon/io5";
+import { IoClose } from "react-icons/io5";
 
 function PhotoLibrary({ setPhoto, hidePhotoLibrary }) {
   const image = [
