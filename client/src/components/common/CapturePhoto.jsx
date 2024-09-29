@@ -16,7 +16,7 @@ function CapturePhoto({ hide, setImage }) {
     };
     startCamera();
     return () => {
-      stream.getTracks().forEach((track) => track.stop());
+      stream?.getTracks().forEach((track) => track.stop());
     };
   }, []);
 
@@ -31,7 +31,7 @@ function CapturePhoto({ hide, setImage }) {
       <div className="flex flex-col gap-4 w-full items-center justify-center">
         <div
           className="pt-2 pr-2 cursor-pointer flex items-end justify-end"
-          onClick={() => hidePhotoLibrary(false)}
+          onClick={() => hide(false)}
         >
           <IoClose className="h-10 w-10 cursor-pointer" onClick={hide} />
         </div>

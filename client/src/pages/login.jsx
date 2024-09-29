@@ -1,6 +1,6 @@
 import { reducerCases } from "@/context/constants"; 
 import { useStateProvider } from "@/context/StateContext";
-import { CHECK_USER_ENDPOINT } from "@/utils/ApiRoutes";
+import { CHECK_USER_ROUTE } from "@/utils/ApiRoutes";
 import { firebaseAuth } from "@/utils/FirebaseConfig";
 import axios from "axios";
 import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
@@ -19,7 +19,7 @@ function Login() {
   console.log('====================================');
 
   useEffect(() => {
-    console.log({ userInfo });
+    console.log({ userInfo, newUser });
     if (userInfo?.id && !newUser) router.push("/");
   }, [userInfo, newUser]);
 
@@ -31,7 +31,7 @@ function Login() {
 
     try {
       if (email) {
-        const { data } = await axios.post(CHECK_USER_ENDPOINT, { email });
+        const { data } = await axios.post(CHECK_USER_ROUTE, { email });
         console.log({ data });
         if (!data.status) {
           dispatch({ type: reducerCases.SET_NEW_USER, newUser: true });
@@ -52,7 +52,7 @@ function Login() {
             email,
             profilePicture: profileImage,
             status,
-          } = data;
+          } = data.data;
           dispatch({
             type: reducerCases.SET_USER_INFO,
             userInfo: {
