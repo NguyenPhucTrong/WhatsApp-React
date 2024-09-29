@@ -14,7 +14,7 @@ function Input({ name, state, setState, label = false }) {
           name={name}
           value={state}
           onChange={(e) => setState(e.target.value)}
-          className="bg-input-background text-start focus:outline-none text-whote h-10 rouded-lg px-5 py-4 w-full"
+          className="bg-input-background text-start focus:outline-none text-white h-10 rouded-lg px-5 py-4 w-full"
         ></input>
       </div>
     </div>

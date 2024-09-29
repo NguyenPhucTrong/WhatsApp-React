@@ -34,7 +34,7 @@ function onboarding() {
           dispatch({
             type: reducerCases.SET_USER_INFO,
             userInfo: {
-              id: data.id,
+              id: data.user.id,
               name,
               email,
               profileImage: image,
@@ -73,7 +73,7 @@ function onboarding() {
       <div className="flex gap-6 mt-6">
         <div className="flex flex-col items-center justify-center mt-5 gap-6">
           <Input name="Display Name" state={name} setState={setName} label />
-          <Input name="About" state="about" setState={setAbout} label></Input>
+          <Input name="About" state={about} setState={setAbout} label></Input>
           <div className="flex items-center justify-center">
             <button
               className="flex items-center justify-center gap-7 bg-search-input-container-background p-5 rounded-lg"

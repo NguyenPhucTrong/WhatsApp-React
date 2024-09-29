@@ -1,18 +1,19 @@
 import index from "@/pages";
+import Image from "next/image";
 import React from "react";
 import { IoClose } from "react-icons/io5";
 
-function PhotoLibrary({ setPhoto, hidePhotoLibrary }) {
-  const image = [
-    "/avatars/1.jpg",
-    "/avatars/2.jpg",
-    "/avatars/3.jpg",
-    "/avatars/4.jpg",
-    "/avatars/5.jpg",
-    "/avatars/6.jpg",
-    "/avatars/7.jpg",
-    "/avatars/8.jpg",
-    "/avatars/9.jpg",
+function PhotoLibrary({ setImage, hidePhotoLibrary }) {
+  const images = [
+    "/avatars/1.png",
+    "/avatars/2.png",
+    "/avatars/3.png",
+    "/avatars/4.png",
+    "/avatars/5.png",
+    "/avatars/6.png",
+    "/avatars/7.png",
+    "/avatars/8.png",
+    "/avatars/9.png",
   ];
 
   return (
@@ -22,13 +23,13 @@ function PhotoLibrary({ setPhoto, hidePhotoLibrary }) {
           className="pt-2 pe-2 cursor-pointer flex items-end justify-end"
           onClick={() => hidePhotoLibrary(false)}
         >
-          <IoClose className="h-10 w-10 cursor-pointer" onClick={hide} />
+          <IoClose className="h-10 w-10 cursor-pointer" />
         </div>
         <div className="grid grid-cols-3 justify-center items-center gap-16 p-20 w-full">
           {images.map((image, index) => (
             <div
               onClick={() => {
-                setImage(image[index]);
+                setImage(images[index]);
                 hidePhotoLibrary(false);
               }}
             >
