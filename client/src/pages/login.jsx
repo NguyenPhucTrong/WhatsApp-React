@@ -1,4 +1,4 @@
-import { reducerCases } from "@/context/constants"; 
+import { reducerCases } from "@/context/constants";
 import { useStateProvider } from "@/context/StateContext";
 import { CHECK_USER_ROUTE } from "@/utils/ApiRoutes";
 import { firebaseAuth } from "@/utils/FirebaseConfig";
@@ -6,7 +6,7 @@ import axios from "axios";
 import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import Image from "next/image";
 import { useRouter } from "next/router";
-import React, { useEffect } from "react"; 
+import React, { useEffect } from "react";
 import { FcGoogle } from "react-icons/fc";
 
 function Login() {
@@ -15,7 +15,8 @@ function Login() {
   const [{ userInfo, newUser }, dispatch] = useStateProvider();
 
   console.log('====================================');
-  console.log({userInfo, newUser});
+  console.log({ userInfo, newUser });
+
   console.log('====================================');
 
   useEffect(() => {
