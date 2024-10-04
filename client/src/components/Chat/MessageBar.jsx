@@ -1,5 +1,6 @@
 import React from "react";
 import { BsEmojiSmile } from "react-icons/bs";
+import { FaMicrophone } from "react-icons/fa";
 import { ImAttachment } from "react-icons/im";
 import { MdSend } from "react-icons/md";
 
