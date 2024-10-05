@@ -7,7 +7,7 @@ import axios from "axios";
 import { useRouter } from "next/router";
 import { useStateProvider } from "@/context/StateContext";
 import { reducerCases } from "@/context/constants";
-import { CHECK_USER_ROUTE } from "@/utils/ApiRoutes";
+import { CHECK_USER_ROUTE, GET_MESSAGES_ROUTE } from "@/utils/ApiRoutes";
 import Chat from "./Chat/Chat";
 
 function Main() {
@@ -49,6 +49,18 @@ function Main() {
       }
     }
   });
+
+  useEffect(() => {
+    const getMessages = async () => {
+      const { data } = await axios.get(
+        `${GET_MESSAGES_ROUTE}/${userInfo.id}/${currentChatUser.id}`
+      );
+      console.log({ data });
+    }
+    if (currentChatUser?.id) {
+      getMessages();
+    }
+  }, [currentChatUser])
   return (
     <>
       <div className="grid grid-cols-main h-screen w-screen max-h-screen max-w-full over">
