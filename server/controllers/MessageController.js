@@ -42,32 +42,32 @@ export const getMessages = async (req, res, next) => {
 
         const messages = await prisma.messages.findMany({
             where: {
-                OR: [
-                    {
-                        senderId: parseInt(from),
-                        receiverId: parseInt(to),
-                    },
-                    {
-                        senderId: parseInt(to),
-                        receiverId: parseInt(from),
-                    },
-                ],
+                OR: [{
+                    senderId: parseInt(from),
+                    receiverId: parseInt(to),
+                }, {
+                    senderId: parseInt(to),
+                    receiverId: parseInt(from),
+                }]
             },
             orderBy: {
                 id: "asc",
-            },
+            }
         });
+        // console.log(messages)
+
 
         const unreadMessages = [];
+        // console.log("Unread Messages IDs:", unreadMessages, to);
+
         messages.forEach((message, index) => {
             if (message.messagesStatus !== "read" && message.senderId === parseInt(to)) {
                 messages[index].messagesStatus = "read";
                 unreadMessages.push(message.id);
-                console.log("Unread Messages IDs:", unreadMessages);
+                // console.log("Unread Messages IDs:", unreadMessages);
             }
         });
 
-        // Cập nhật tin nhắn chưa đọc thành "read"
         await prisma.messages.updateMany({
             where: {
                 id: { in: unreadMessages },
