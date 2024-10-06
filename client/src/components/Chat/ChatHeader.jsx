@@ -14,7 +14,7 @@ function ChatHeader() {
         <Avatar type="sm" image={currentChatUser?.profilePicture} />
         <div className="flex flex-col">
           <span className="text-primary-strong">{currentChatUser?.name}</span>
-          <span className="text-secondary text-sm">online/offlien</span>
+          <span className="text-secondary text-sm">online/offline</span>
         </div>
       </div>
       <div className="flex gap-6">
